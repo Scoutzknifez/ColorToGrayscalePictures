@@ -8,13 +8,22 @@ def start():
         return
 
     Constants.initialize(os.path.dirname(__file__))
-    Utils.save_image(
-        Utils.convert_image(
-            Utils.take_screenshot()
-        ),
-        Utils.get_testing_path(),
-        "converted.png"
-    )
+    all_conversions()
+
+
+def all_conversions():
+    image = Utils.take_screenshot()
+    conversions = ["grayscale", "redscale", "greenscale", "bluescale"]
+
+    for conversion in conversions:
+        Utils.save_image(
+            Utils.convert_image(
+                image,
+                conversion
+            ),
+            Utils.get_testing_path(),
+            conversion + ".png"
+        )
 
 
 start()

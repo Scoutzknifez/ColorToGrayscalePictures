@@ -22,15 +22,23 @@ def average_pixel_color(pixel):
     return (pixel[0] + pixel[1] + pixel[2]) / 3
 
 
-def convert_image(image):
+def convert_image(image, mode):
     image_pixels = image.load()
     data = []
 
     for y in range(image.size[1]):
         for x in range(image.size[0]):
-            data.append(average_pixel_color(image_pixels[x, y]))
+            if mode == "redscale":
+                pixel = (int(average_pixel_color(image_pixels[x, y])), 0, 0)
+            elif mode == "greenscale":
+                pixel = (0, int(average_pixel_color(image_pixels[x, y])), 0)
+            elif mode == "bluescale":
+                pixel = (0, 0, int(average_pixel_color(image_pixels[x, y])))
+            else:
+                pixel = int(average_pixel_color(image_pixels[x, y]))
+            data.append(pixel)
 
-    image = Image.new('L', (image.size[0], image.size[1]))
+    image = Image.new("L" if (mode == "grayscale") else "RGB", (image.size[0], image.size[1]))
     image.putdata(data)
 
     return image
