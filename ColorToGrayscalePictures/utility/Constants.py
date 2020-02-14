@@ -1,8 +1,8 @@
 import ctypes
 
 # Globals
-MAIN_FILE_LOCATION = ''
-SCREENSIZE = 0, 0
+MAIN_FILE_LOCATION = ''     # Keeps track of where the main root program file is
+SCREENSIZE = 0, 0           # The screen size we are working with
 
 
 def initialize(main_file):
