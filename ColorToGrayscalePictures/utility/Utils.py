@@ -3,14 +3,17 @@ from PIL import Image
 import pyautogui as auto_gui
 
 
+# Returns the location of the testing folder to put screenshots into
 def get_testing_path():
     return Constants.MAIN_FILE_LOCATION + "/testing/"
 
 
+# Saves an image to a location with the given name
 def save_image(image, location, name):
     image.save(location + name)
 
 
+# Takes a screenshot of the screen and puts it
 def take_screenshot():
     image = auto_gui.grab()
     save_image(image, get_testing_path(), "screenie.png")
@@ -18,6 +21,7 @@ def take_screenshot():
     return Image.open(get_testing_path() + "screenie.png")
 
 
+# Gets the average color density of the RGB scale
 def average_pixel_color(pixel):
     return (pixel[0] + pixel[1] + pixel[2]) / 3
 
