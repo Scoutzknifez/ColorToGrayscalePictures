@@ -26,6 +26,7 @@ def average_pixel_color(pixel):
     return (pixel[0] + pixel[1] + pixel[2]) / 3
 
 
+# Converts a given image to a given color scale.
 def convert_image(image, mode):
     image_pixels = image.load()
     data = []

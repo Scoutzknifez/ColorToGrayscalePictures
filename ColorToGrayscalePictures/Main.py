@@ -13,9 +13,9 @@ def start():
 
 
 def all_conversions():
-    # Get the current screen TODO most likely to accept a file
+    # Get the current screen
     image = Utils.take_screenshot()
-    # The possible types of conversions... TODO turn into enum?
+    # The possible types of conversions.
     conversions = ["grayscale", "redscale", "greenscale", "bluescale"]
 
     for conversion in conversions:
